@@ -45,13 +45,12 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     TextView level;
     TextView highScore; //for showing current high score
 
-    int runTimerVal;
     int timerVal;
     int levelVal;
     int colorLimit;
     int highScoreVal;
 
-    int tutorialVal;
+    boolean tutorialComplete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +90,8 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
         highScore = (TextView) findViewById(R.id.highScore);
         highScore.setText(String.valueOf(highScoreVal));
 
-        tutorialVal = 1;
+        tutorialComplete = false;
         welcomeWagon();
-
-
     }
 
     @Override
@@ -118,23 +115,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn1Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -156,23 +137,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn2Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -194,23 +159,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn3Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -232,23 +181,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn4Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -270,23 +203,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn5Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -308,23 +225,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn6Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -346,23 +247,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn7Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -384,23 +269,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn8Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
 
@@ -422,26 +291,60 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                 btn9Val = 9;
                 determineLowestValue();
             }else {
-
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
-                mediaPlayer.start();
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = 1;
-                level.setText(String.valueOf(levelVal));
-                setColour();
-                determineLowestValue();
+                failure();
             }
         }
         declareWinner();
+    }
+
+    private void failure() {
+
+        //Play Sound
+        final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reset);
+        mediaPlayer.start();
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mediaPlayerB) {
+                mediaPlayerB.reset();
+                mediaPlayerB.release();
+            }
+        });
+
+        if (tutorialComplete){
+            timerVal = 10;
+            levelVal = 1;
+            level.setText(String.valueOf(levelVal));
+            setColour();
+            determineLowestValue();
+        }else {
+            btn1.setEnabled(false);
+            btn2.setEnabled(false);
+            btn3.setEnabled(false);
+            btn4.setEnabled(false);
+            btn5.setEnabled(false);
+            btn6.setEnabled(false);
+            btn7.setEnabled(false);
+            btn8.setEnabled(false);
+            btn9.setEnabled(false);
+            gameStatus.setText("Follow The Rainbow!");
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    gameStatus.setText("");
+                    btn1.setEnabled(true);
+                    btn2.setEnabled(true);
+                    btn3.setEnabled(true);
+                    btn4.setEnabled(true);
+                    btn5.setEnabled(true);
+                    btn6.setEnabled(true);
+                    btn7.setEnabled(true);
+                    btn8.setEnabled(true);
+                    btn9.setEnabled(true);
+                }
+            }, 1000);
+            tutorialColourSet();
+        }
     }
 
     private void setColour() {
@@ -581,62 +484,81 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void declareWinner(){
-        if (btn1Val == 9 && btn2Val == 9 && btn3Val == 9 && btn4Val == 9 && btn5Val == 9 && btn6Val == 9 && btn7Val == 9 && btn8Val == 9 && btn9Val == 9)
-        {
+        if (btn1Val == 9 && btn2Val == 9 && btn3Val == 9 && btn4Val == 9 && btn5Val == 9 && btn6Val == 9 && btn7Val == 9 && btn8Val == 9 && btn9Val == 9) {
 
-            //disable the buttons so the user cant spam to increase level count on changeover
-            btn1.setEnabled(false);
-            btn2.setEnabled(false);
-            btn3.setEnabled(false);
-            btn4.setEnabled(false);
-            btn5.setEnabled(false);
-            btn6.setEnabled(false);
-            btn7.setEnabled(false);
-            btn8.setEnabled(false);
-            btn9.setEnabled(false);
+            if (tutorialComplete){
+                //disable the buttons so the user cant spam to increase level count on changeover
+                btn1.setEnabled(false);
+                btn2.setEnabled(false);
+                btn3.setEnabled(false);
+                btn4.setEnabled(false);
+                btn5.setEnabled(false);
+                btn6.setEnabled(false);
+                btn7.setEnabled(false);
+                btn8.setEnabled(false);
+                btn9.setEnabled(false);
 
+                //Play Sound
+                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.levelup);
+                mediaPlayer.start();
 
-            //Play Sound
-            final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.levelup);
-            mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    public void onCompletion(MediaPlayer mediaPlayerB) {
+                        mediaPlayerB.reset();
+                        mediaPlayerB.release();
+                    }
+                });
 
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mediaPlayerB) {
-                    mediaPlayerB.reset();
-                    mediaPlayerB.release();
+                timerVal = 10;
+                levelVal = levelVal + 1;
+                level.setText(String.valueOf(levelVal));
+                gameStatus.setText("Level " + String.valueOf(levelVal));
+
+                //check and set high score variable if current level exceeds highscore
+                if (levelVal > highScoreVal){
+                    highScoreVal = levelVal;
+                    //highScore.setTypeface(null, Typeface.BOLD);
+                    highScore.setText(String.valueOf(highScoreVal));
                 }
-            });
 
-            timerVal = 10;
-            levelVal = levelVal + 1;
-            level.setText(String.valueOf(levelVal));
-            gameStatus.setText("Level " + String.valueOf(levelVal));
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        restart();
+                    }
+                }, 1000);
+            }else {
+                //disable the buttons so the user cant spam to increase level count on changeover
+                btn1.setEnabled(false);
+                btn2.setEnabled(false);
+                btn3.setEnabled(false);
+                btn4.setEnabled(false);
+                btn5.setEnabled(false);
+                btn6.setEnabled(false);
+                btn7.setEnabled(false);
+                btn8.setEnabled(false);
+                btn9.setEnabled(false);
 
-            //check and set high score variable if current level exceeds highscore
-            if (levelVal > highScoreVal){
-                highScoreVal = levelVal;
-                //highScore.setTypeface(null, Typeface.BOLD);
-                highScore.setText(String.valueOf(highScoreVal));
+                gameStatus.setText("Tutorial Complete!");
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        tutorialComplete = true;
+                        restart();
+                        setTimer();
+                    }
+                }, 3000);
             }
-
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    restart();
-                }
-            }, 1000);
-
         }
-
-
     }
 
     private void restart(){
         gameStatus.setText("");
         setColour();
         determineLowestValue();
-        
+
         //enable the buttons again
         btn1.setEnabled(true);
         btn2.setEnabled(true);
@@ -687,58 +609,97 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
      */
     private void welcomeWagon(){
 
+        blackOut();
+        gameStatus.setText("Follow The Rainbow!");
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
+        btn5.setEnabled(false);
+        btn6.setEnabled(false);
+        btn7.setEnabled(false);
+        btn8.setEnabled(false);
+        btn9.setEnabled(false);
+
         //Instructions
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                gameStatus.setText("");
 
-                if (tutorialVal == 1){
-                    gameStatus.setText("Red");
-                    btn1.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 2){
-                    gameStatus.setText("Orange");
-                    btn2.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 3){
-                    gameStatus.setText("Yellow");
-                    btn3.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 4){
-                    gameStatus.setText("Green");
-                    btn4.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 5){
-                    gameStatus.setText("Blue");
-                    btn5.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 6){
-                    gameStatus.setText("Indigo");
-                    btn6.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 7){
-                    gameStatus.setText("Violet");
-                    btn7.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 8){
-                    gameStatus.setText("White");
-                    btn8.setBackgroundColor(Color.rgb(0,0,0));
-                }else if (tutorialVal == 9){
-                    btn9.setBackgroundColor(Color.rgb(0,0,0));
-                }else {
-                    //Nothing
-                }
+                tutorialColourSet();
 
-
-                tutorialVal = tutorialVal + 1;
-
-                if (tutorialVal <= 9) {
-                    welcomeWagon();
-                }else{
-                    gameStatus.setText("");
-                }
+                btn1.setEnabled(true);
+                btn2.setEnabled(true);
+                btn3.setEnabled(true);
+                btn4.setEnabled(true);
+                btn5.setEnabled(true);
+                btn6.setEnabled(true);
+                btn7.setEnabled(true);
+                btn8.setEnabled(true);
+                btn9.setEnabled(true);
             }
-        }, 400);
+        }, 5000);
+    }
 
+    private void tutorialColourSet() {
+        btn1.setBackgroundColor(Color.rgb(255, 0, 0)); //Red
+        btn1Val = 1;
 
-        if (tutorialVal == 9){
-            setColour();
-            determineLowestValue();
-            setTimer();
-        }
+        btn2.setBackgroundColor(Color.rgb(255, 165, 0)); //Orange
+        btn2Val = 2;
+
+        btn3.setBackgroundColor(Color.rgb(255, 255, 0)); //Yellow
+        btn3Val = 3;
+
+        btn4.setBackgroundColor(Color.rgb(0, 128, 0)); //Green
+        btn4Val = 4;
+
+        btn5.setBackgroundColor(Color.rgb(0, 0, 255)); //Blue
+        btn5Val = 5;
+
+        btn6.setBackgroundColor(Color.rgb(75, 0, 130)); //Indigo
+        btn6Val = 6;
+
+        btn7.setBackgroundColor(Color.rgb(238, 130, 238)); //Violet
+        btn7Val = 7;
+
+        btn8.setBackgroundColor(Color.rgb(255, 255, 255)); //White
+        btn8Val = 8;
+
+        btn9.setBackgroundColor(Color.rgb(0, 0, 0)); // Black
+        btn9Val = 9;
+
+        determineLowestValue();
+    }
+
+    private void blackOut() {
+        btn1.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn1Val = 1;
+
+        btn2.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn2Val = 2;
+
+        btn3.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn3Val = 3;
+
+        btn4.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn4Val = 4;
+
+        btn5.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn5Val = 5;
+
+        btn6.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn6Val = 6;
+
+        btn7.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn7Val = 7;
+
+        btn8.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn8Val = 8;
+
+        btn9.setBackgroundColor(Color.rgb(0, 0, 0));
+        btn9Val = 9;
     }
 }
