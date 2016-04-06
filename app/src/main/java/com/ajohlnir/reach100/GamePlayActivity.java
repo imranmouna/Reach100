@@ -581,7 +581,20 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void declareWinner(){
-        if (btn1Val == 9 && btn2Val == 9 && btn3Val == 9 && btn4Val == 9 && btn5Val == 9 && btn6Val == 9 && btn7Val == 9 && btn8Val == 9 && btn9Val == 9){
+        if (btn1Val == 9 && btn2Val == 9 && btn3Val == 9 && btn4Val == 9 && btn5Val == 9 && btn6Val == 9 && btn7Val == 9 && btn8Val == 9 && btn9Val == 9)
+        {
+
+            //disable the buttons so the user cant spam to increase level count on changeover
+            btn1.setEnabled(false);
+            btn2.setEnabled(false);
+            btn3.setEnabled(false);
+            btn4.setEnabled(false);
+            btn5.setEnabled(false);
+            btn6.setEnabled(false);
+            btn7.setEnabled(false);
+            btn8.setEnabled(false);
+            btn9.setEnabled(false);
+
 
             //Play Sound
             final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.levelup);
@@ -599,7 +612,7 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
             level.setText(String.valueOf(levelVal));
             gameStatus.setText("Level " + String.valueOf(levelVal));
 
-            //check and set high score variable if current level exceeds hiscore
+            //check and set high score variable if current level exceeds highscore
             if (levelVal > highScoreVal){
                 highScoreVal = levelVal;
                 //highScore.setTypeface(null, Typeface.BOLD);
@@ -613,16 +626,32 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                     restart();
                 }
             }, 1000);
+
         }
+
+
     }
 
     private void restart(){
         gameStatus.setText("");
         setColour();
         determineLowestValue();
+        
+        //enable the buttons again
+        btn1.setEnabled(true);
+        btn2.setEnabled(true);
+        btn3.setEnabled(true);
+        btn4.setEnabled(true);
+        btn5.setEnabled(true);
+        btn6.setEnabled(true);
+        btn7.setEnabled(true);
+        btn8.setEnabled(true);
+        btn9.setEnabled(true);
     }
 
     private void setTimer(){
+
+
         timer.setText(String.valueOf(timerVal));
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
