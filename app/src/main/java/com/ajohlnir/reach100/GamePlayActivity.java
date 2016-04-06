@@ -634,6 +634,9 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
         }, 1000);
     }
 
+    /**
+     * Method to show instructions on first launch
+     */
     private void welcomeWagon(){
 
         //Instructions
