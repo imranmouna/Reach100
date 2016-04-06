@@ -1,6 +1,7 @@
 package com.ajohlnir.reach100;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,10 +43,14 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     TextView gameStatus;
     TextView timer;
     TextView level;
+    TextView highScore; //for showing current high score
 
+    int runTimerVal;
     int timerVal;
     int levelVal;
     int colorLimit;
+    int highScoreVal;
+
     int tutorialVal;
 
     @Override
@@ -81,8 +86,15 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
         levelVal = 1;
         level.setText(String.valueOf(levelVal));
 
+        highScoreVal = 1;
+
+        highScore = (TextView) findViewById(R.id.highScore);
+        highScore.setText(String.valueOf(highScoreVal));
+
         tutorialVal = 1;
         welcomeWagon();
+
+
     }
 
     @Override
@@ -587,6 +599,13 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
             level.setText(String.valueOf(levelVal));
             gameStatus.setText("Level " + String.valueOf(levelVal));
 
+            //check and set high score variable if current level exceeds hiscore
+            if (levelVal > highScoreVal){
+                highScoreVal = levelVal;
+                //highScore.setTypeface(null, Typeface.BOLD);
+                highScore.setText(String.valueOf(highScoreVal));
+            }
+
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -675,14 +694,17 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
                     //Nothing
                 }
 
+
                 tutorialVal = tutorialVal + 1;
+
                 if (tutorialVal <= 9) {
                     welcomeWagon();
                 }else{
                     gameStatus.setText("");
                 }
             }
-        }, 2000);
+        }, 400);
+
 
         if (tutorialVal == 9){
             setColour();
