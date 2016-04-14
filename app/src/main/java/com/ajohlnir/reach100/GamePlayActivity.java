@@ -44,13 +44,12 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     TextView timer;
     TextView level;
     TextView highScore; //for showing current high score
+    TextView appName;
 
     int timerVal;
     int levelVal;
     int colorLimit;
     int highScoreVal;
-
-    boolean tutorialComplete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,16 +80,25 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
         gameStatus = (TextView) findViewById(R.id.gameStatus);
         timer = (TextView) findViewById(R.id.timer);
         timerVal = 9;
+
         level = (TextView) findViewById(R.id.level);
         levelVal = 1;
         level.setText(String.valueOf(levelVal));
 
         highScoreVal = 1;
-
         highScore = (TextView) findViewById(R.id.highScore);
         highScore.setText(String.valueOf(highScoreVal));
 
-        tutorialComplete = false;
+        appName = (TextView) findViewById(R.id.appName);
+
+        //Font
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Bradley Hand Bold.ttf");
+        gameStatus.setTypeface(tf);
+        timer.setTypeface(tf);
+        level.setTypeface(tf);
+        highScore.setTypeface(tf);
+        appName.setTypeface(tf);
+
         welcomeWagon();
     }
 
@@ -310,41 +318,11 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        if (tutorialComplete){
-            timerVal = 10;
-            levelVal = 1;
-            level.setText(String.valueOf(levelVal));
-            setColour();
-            determineLowestValue();
-        }else {
-            btn1.setEnabled(false);
-            btn2.setEnabled(false);
-            btn3.setEnabled(false);
-            btn4.setEnabled(false);
-            btn5.setEnabled(false);
-            btn6.setEnabled(false);
-            btn7.setEnabled(false);
-            btn8.setEnabled(false);
-            btn9.setEnabled(false);
-            gameStatus.setText("Follow The Rainbow!");
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    gameStatus.setText("");
-                    btn1.setEnabled(true);
-                    btn2.setEnabled(true);
-                    btn3.setEnabled(true);
-                    btn4.setEnabled(true);
-                    btn5.setEnabled(true);
-                    btn6.setEnabled(true);
-                    btn7.setEnabled(true);
-                    btn8.setEnabled(true);
-                    btn9.setEnabled(true);
-                }
-            }, 1000);
-            tutorialColourSet();
-        }
+        timerVal = 10;
+        levelVal = 1;
+        level.setText(String.valueOf(levelVal));
+        setColour();
+        determineLowestValue();
     }
 
     private void setColour() {
@@ -394,8 +372,9 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void colourCodeGeneration() {
-
-        if (levelVal <= 3){
+        if (levelVal == 1){
+            colorLimit = 2;
+        }else if (levelVal > 1 && levelVal <= 3){
             colorLimit = 3;
         }else if (levelVal > 3 && levelVal <= 10){
             colorLimit = 4;
@@ -486,71 +465,47 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     private void declareWinner(){
         if (btn1Val == 9 && btn2Val == 9 && btn3Val == 9 && btn4Val == 9 && btn5Val == 9 && btn6Val == 9 && btn7Val == 9 && btn8Val == 9 && btn9Val == 9) {
 
-            if (tutorialComplete){
-                //disable the buttons so the user cant spam to increase level count on changeover
-                btn1.setEnabled(false);
-                btn2.setEnabled(false);
-                btn3.setEnabled(false);
-                btn4.setEnabled(false);
-                btn5.setEnabled(false);
-                btn6.setEnabled(false);
-                btn7.setEnabled(false);
-                btn8.setEnabled(false);
-                btn9.setEnabled(false);
+            //disable the buttons so the user cant spam to increase level count on changeover
+            btn1.setEnabled(false);
+            btn2.setEnabled(false);
+            btn3.setEnabled(false);
+            btn4.setEnabled(false);
+            btn5.setEnabled(false);
+            btn6.setEnabled(false);
+            btn7.setEnabled(false);
+            btn8.setEnabled(false);
+            btn9.setEnabled(false);
 
-                //Play Sound
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.levelup);
-                mediaPlayer.start();
+            //Play Sound
+            final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.levelup);
+            mediaPlayer.start();
 
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mediaPlayerB) {
-                        mediaPlayerB.reset();
-                        mediaPlayerB.release();
-                    }
-                });
-
-                timerVal = 10;
-                levelVal = levelVal + 1;
-                level.setText(String.valueOf(levelVal));
-                gameStatus.setText("Level " + String.valueOf(levelVal));
-
-                //check and set high score variable if current level exceeds highscore
-                if (levelVal > highScoreVal){
-                    highScoreVal = levelVal;
-                    //highScore.setTypeface(null, Typeface.BOLD);
-                    highScore.setText(String.valueOf(highScoreVal));
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mediaPlayerB) {
+                    mediaPlayerB.reset();
+                    mediaPlayerB.release();
                 }
+            });
 
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        restart();
-                    }
-                }, 1000);
-            }else {
-                //disable the buttons so the user cant spam to increase level count on changeover
-                btn1.setEnabled(false);
-                btn2.setEnabled(false);
-                btn3.setEnabled(false);
-                btn4.setEnabled(false);
-                btn5.setEnabled(false);
-                btn6.setEnabled(false);
-                btn7.setEnabled(false);
-                btn8.setEnabled(false);
-                btn9.setEnabled(false);
+            timerVal = 10;
+            levelVal = levelVal + 1;
+            level.setText(String.valueOf(levelVal));
+            gameStatus.setText("Level " + String.valueOf(levelVal));
 
-                gameStatus.setText("Tutorial Complete!");
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        tutorialComplete = true;
-                        restart();
-                        setTimer();
-                    }
-                }, 3000);
+            //check and set high score variable if current level exceeds highscore
+            if (levelVal > highScoreVal){
+                highScoreVal = levelVal;
+                //highScore.setTypeface(null, Typeface.BOLD);
+                highScore.setText(String.valueOf(highScoreVal));
             }
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    restart();
+                }
+            }, 1000);
         }
     }
 
@@ -572,7 +527,6 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setTimer(){
-
 
         timer.setText(String.valueOf(timerVal));
         final Handler handler = new Handler();
@@ -605,12 +559,11 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * Method to show instructions on first launch
+     * Method to show appName on first launch
      */
     private void welcomeWagon(){
 
         blackOut();
-        gameStatus.setText("Follow The Rainbow!");
         btn1.setEnabled(false);
         btn2.setEnabled(false);
         btn3.setEnabled(false);
@@ -620,86 +573,47 @@ public class GamePlayActivity extends AppCompatActivity implements View.OnClickL
         btn7.setEnabled(false);
         btn8.setEnabled(false);
         btn9.setEnabled(false);
+        appName.setText("F.T.R");
 
-        //Instructions
+        //Play Game
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                gameStatus.setText("");
+                appName.setText("");
 
-                tutorialColourSet();
-
-                btn1.setEnabled(true);
-                btn2.setEnabled(true);
-                btn3.setEnabled(true);
-                btn4.setEnabled(true);
-                btn5.setEnabled(true);
-                btn6.setEnabled(true);
-                btn7.setEnabled(true);
-                btn8.setEnabled(true);
-                btn9.setEnabled(true);
+                restart();
+                setTimer();
+                level.setVisibility(View.VISIBLE);
+                highScore.setVisibility(View.VISIBLE);
             }
         }, 5000);
-    }
 
-    private void tutorialColourSet() {
-        btn1.setBackgroundColor(Color.rgb(255, 0, 0)); //Red
-        btn1Val = 1;
-
-        btn2.setBackgroundColor(Color.rgb(255, 165, 0)); //Orange
-        btn2Val = 2;
-
-        btn3.setBackgroundColor(Color.rgb(255, 255, 0)); //Yellow
-        btn3Val = 3;
-
-        btn4.setBackgroundColor(Color.rgb(0, 128, 0)); //Green
-        btn4Val = 4;
-
-        btn5.setBackgroundColor(Color.rgb(0, 0, 255)); //Blue
-        btn5Val = 5;
-
-        btn6.setBackgroundColor(Color.rgb(75, 0, 130)); //Indigo
-        btn6Val = 6;
-
-        btn7.setBackgroundColor(Color.rgb(238, 130, 238)); //Violet
-        btn7Val = 7;
-
-        btn8.setBackgroundColor(Color.rgb(255, 255, 255)); //White
-        btn8Val = 8;
-
-        btn9.setBackgroundColor(Color.rgb(0, 0, 0)); // Black
-        btn9Val = 9;
-
-        determineLowestValue();
     }
 
     private void blackOut() {
+
+        //Hide All Buttons and TextViews
         btn1.setBackgroundColor(Color.rgb(0, 0, 0));
         btn1Val = 1;
-
         btn2.setBackgroundColor(Color.rgb(0, 0, 0));
         btn2Val = 2;
-
         btn3.setBackgroundColor(Color.rgb(0, 0, 0));
         btn3Val = 3;
-
         btn4.setBackgroundColor(Color.rgb(0, 0, 0));
         btn4Val = 4;
-
         btn5.setBackgroundColor(Color.rgb(0, 0, 0));
         btn5Val = 5;
-
         btn6.setBackgroundColor(Color.rgb(0, 0, 0));
         btn6Val = 6;
-
         btn7.setBackgroundColor(Color.rgb(0, 0, 0));
         btn7Val = 7;
-
         btn8.setBackgroundColor(Color.rgb(0, 0, 0));
         btn8Val = 8;
-
         btn9.setBackgroundColor(Color.rgb(0, 0, 0));
         btn9Val = 9;
+
+        level.setVisibility(View.INVISIBLE);
+        highScore.setVisibility(View.INVISIBLE);
     }
 }
